@@ -443,6 +443,21 @@
             font-size: 0.9rem;
         }
 
+        .wip-tag {
+            font-size: 0.7em;
+            color: #f4b17b; /* accent color for “work in progress” */
+            font-weight: bold;
+            margin-left: 0.3rem;
+        }
+        
+        .stat-description {
+            font-size: 0.9em;
+            color: #ccc;
+            margin-top: 0.3rem;
+            max-width: 250px;
+        }
+
+
         @media (max-width: 1024px) {
             .hero h1 {
                 font-size: 3rem;
@@ -523,6 +538,7 @@
     </section>
 
     <!-- Stats Section -->
+    <!--
     <section class="stats">
         <div class="stat-item">
             <div class="stat-number">1.5km</div>
@@ -537,6 +553,32 @@
             <div class="stat-label">Iberian Coverage</div>
         </div>
     </section>
+    -->
+    <!-- Stats Section -->
+<section class="stats">
+    <div class="stat-item">
+        <div class="stat-number">50 km → 1.5 km <span class="wip-tag">WIP</span></div>
+        <div class="stat-label">Grid Resolution</div>
+        <div class="stat-description">
+            Development underway: starting with pilot regions (Costa del Sol & Lisboa) at 50×50 km, scaling to 5×5 km, and ultimately 1.5×1.5 km across Iberia.
+        </div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-number">16h → 72h <span class="wip-tag">WIP</span></div>
+        <div class="stat-label">Forecast Window</div>
+        <div class="stat-description">
+            Nowcasting and predictive models are in progress, targeting 16-hour initial forecasts, expanding to 72-hour predictions.
+        </div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-number">Pilot → ≥90% <span class="wip-tag">WIP</span></div>
+        <div class="stat-label">Iberian Coverage</div>
+        <div class="stat-description">
+            Coverage is under development: pilot regions first, with full Iberian Peninsula coverage planned in upcoming phases.
+        </div>
+    </div>
+</section>
+
 
     <!-- Features Section -->
     <section class="features" id="solutions">
