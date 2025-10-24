@@ -136,10 +136,10 @@
         /* Stats Section */
         .stats {
             background: white;
-            padding: 5rem 8%;
+            
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            
             /* position: relative; */
             /* 1. Set gap to your BORDER width */
             gap: 2px;
@@ -147,8 +147,9 @@
             /* 2. Set background to your BORDER color */
             background-color: #D14C34;
               
-            /* Optional: Add padding around the outside edge */
-            padding: 2px;
+            border-top: white 24px solid;
+            border-bottom: white 24px solid;
+            
         }
 
         
@@ -156,12 +157,15 @@
         .stat-item {
             text-align: center;
             transition: filter 0.5s ease;
-            padding: calc(1rem - 1px);
+            
   
             /* Just for looks */
-          
-            padding-top: 2rem;
-            padding-bottom: 2rem;
+            padding: calc(1rem - 1px + 8%);
+            padding-top: calc(8% - 1px + 1rem);
+            padding-bottom: calc(8% - 1px + 1rem);
+            padding-top: calc(3rem);
+            padding-bottom: calc(3rem);
+            background: white;
         }
 
 
