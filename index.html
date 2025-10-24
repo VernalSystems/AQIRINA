@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqirina - Micro-Climate & Energy Intelligence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #EEEDE7;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(123, 106, 141, 0.1);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #7B6A8D;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D14C34;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #7B6A8D;
+            color: white;
+            padding: 10rem 8% 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: -2px;
+        }
+
+        .hero h2 {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            font-weight: 400;
+            line-height: 1.6;
+            opacity: 0.95;
+            max-width: 700px;
+        }
+
+        .cta-button {
+            background: #D14C34;
+            color: white;
+            padding: 1.2rem 3rem;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            height: 70%;
+            opacity: 0.15;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 5rem 8%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #D14C34;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #7B6A8D;
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 8%;
+            background: #EEEDE7;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #7B6A8D;
+            font-weight: 400;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .feature-content {
+            padding: 2.5rem;
+        }
+
+        .feature-label {
+            font-size: 0.85rem;
+            color: #20BDA8;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #1a1a1a;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .feature-card p {
+            color: #4a4a4a;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* Large Image Section */
+        .visual-break {
+            padding: 0;
+            margin: 6rem 0;
+        }
+
+        .full-width-image {
+            width: 100%;
+            height: 60vh;
+            position: relative;
+        }
+
+        .full-width-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(4, 54, 3, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .overlay-text {
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: -1px;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        /* Why It Matters Section */
+        .why-matters {
+            background: #043603;
+            color: white;
+            padding: 8rem 8%;
+        }
+
+        .why-matters .section-title {
+            color: white;
+        }
+
+        .why-matters .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .benefit-item {
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #D14C34;
+        }
+
+        .benefit-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #20BDA8;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .benefit-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .benefit-item p {
+            font-size: 1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #EEEDE7;
+            padding: 5rem 8% 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            line-height: 1.8;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: #EEEDE7;
+            text-decoration: none;
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+            color: #20BDA8;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            background: #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .social-icon:hover {
+            background: #D14C34;
+        }
+
+        .footer-bottom {
+            padding-top: 3rem;
+            border-top: 1px solid rgba(238, 237, 231, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .features-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav,
+            .hero,
+            .features,
+            .why-matters,
+            footer {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .nav-menu {
+                gap: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.1rem;
+            }
+
+            .overlay-text {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Aqirina</div>
+        <ul class="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#data">Data</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Precision Weather. Power-Ready Forecasts.</h1>
+            <h2>5 × 5 km micro-climate insight across Iberia for the next-gen energy grid.</h2>
+            <a href="#solutions" class="cta-button">Learn More</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1200&h=800&fit=crop" alt="Wind turbines in Spanish landscape">
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-item">
+            <div class="stat-number">5km</div>
+            <div class="stat-label">Grid Resolution</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">72h</div>
+            <div class="stat-label">Forecast Window</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Iberian Coverage</div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="solutions">
+        <div class="section-header">
+            <h2 class="section-title">Intelligence Built for Iberia</h2>
+            <p class="section-subtitle">Four pillars of next-generation climate intelligence</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-image">
+                    <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800&h=600&fit=crop" alt="Satellite weather data visualization">
+                </div>
+                <div class="feature-content">
+                    <div class="feature-label">Resolution</div>
+                    <h3>Hyper-Local Data</h3>
+                    <p>Our 5×5 km grid delivers granular micro-climate data across every corner of the Iberian Peninsula, enabling precise energy forecasting at the municipal level.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" alt="Real-time data dashboard">
+                </div>
+                <div class="feature-content">
+                    <div class="feature-label">Integration</div>
+                    <h3>Real-Time Systems</h3>
+                    <p>Seamlessly integrate with grid management systems to receive live updates on wind patterns, solar radiation, and temperature fluctuations affecting energy production.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-image">
+                    <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=800&h=600&fit=crop" alt="AI predictive analytics">
+                </div>
+                <div class="feature-content">
+                    <div class="feature-label">Forecasting</div>
+                    <h3>Predictive Analytics</h3>
+                    <p>Advanced AI models forecast energy generation potential up to 72 hours ahead, helping operators optimize dispatch and storage decisions with confidence.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-image">
+                    <img src="https://images.unsplash.com/photo-1527482797697-8795b05a13fe?w=800&h=600&fit=crop" alt="Storm weather patterns">
+                </div>
+                <div class="feature-content">
+                    <div class="feature-label">Protection</div>
+                    <h3>Storm Intelligence</h3>
+                    <p>Early warning systems detect extreme weather events before they impact infrastructure, protecting assets and ensuring grid stability during critical periods.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Break -->
+    <section class="visual-break">
+        <div class="full-width-image">
+            <img src="https://images.unsplash.com/photo-1509390144746-4ce2ef077fd9?w=1600&h=900&fit=crop" alt="Andalusian landscape with solar panels">
+            <div class="image-overlay">
+                <div class="overlay-text">Powering the transition to sustainable energy across Iberia</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why It Matters Section -->
+    <section class="why-matters">
+        <div class="section-header">
+            <h2 class="section-title">Why It Matters</h2>
+            <p class="section-subtitle">The impact on your operations</p>
+        </div>
+
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <div class="benefit-number">01</div>
+                <h3>Optimize Generation</h3>
+                <p>Match renewable energy production with real-time demand by understanding micro-climate patterns that affect solar and wind output across diverse Iberian landscapes.</p>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-number">02</div>
+                <h3>Reduce Curtailment</h3>
+                <p>Minimize wasted renewable energy by accurately predicting surplus generation windows, allowing for better storage planning and grid balancing strategies.</p>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-number">03</div>
+                <h3>Respond to Storms</h3>
+                <p>Protect critical infrastructure with advance notice of severe weather events, enabling proactive maintenance scheduling and emergency response coordination.</p>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-number">04</div>
+                <h3>Future-Proof Operations</h3>
+                <p>Build resilience into your energy strategy with climate intelligence designed for the increasing complexity of distributed renewable generation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Aqirina</h3>
+                <p>Leading micro-climate and energy intelligence for the Iberian Peninsula. Built for the future of renewable energy.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">Li</a>
+                    <a href="#" class="social-icon">Tw</a>
+                    <a href="#" class="social-icon">Gh</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Solutions</h3>
+                <ul>
+                    <li><a href="#">Grid Operators</a></li>
+                    <li><a href="#">Energy Producers</a></li>
+                    <li><a href="#">Research Institutions</a></li>
+                    <li><a href="#">API Access</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press Kit</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">White Papers</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div>© 2025 Aqirina. All rights reserved.</div>
+            <div>Privacy Policy · Terms of Service</div>
+        </div>
+    </footer>
+</body>
+</html>
